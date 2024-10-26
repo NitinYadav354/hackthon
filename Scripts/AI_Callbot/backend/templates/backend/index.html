@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Data Management</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu" />
+</head>
+<body class="bg-white">
+    <div class="imag"></div>
+  <!-- Header -->
+  <header class="header">
+    <a href="#" class="logo">Patient Data Management</a>
+</header>
+<div class="img"></div>
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="imag"></div>
+    <!-- Cards for Overview -->
+    <section class="card-container">
+      <div class="card">
+        <h2>Total Patients</h2>
+        <p class="count">{{ patient_count}}</p>
+      </div>
+      <div class="card">
+        <h2>Appointments Today</h2>
+        <p class="count">{{app_count}}</p>
+      </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="filter-section">
+      <h2>Filter Patients</h2>
+      <div class="filter-grid">
+
+        <!-- Date Filter -->
+        <div class="filter-item">
+          <label for="date">Date</label>
+          <input type="date" id="date" name="date" class="input-field">
+        </div>
+
+        <!-- Doctor Filter -->
+        <div class="filter-item">
+          <label for="doctor">Doctor</label>
+          <select id="doctor" name="doctor" class="input-field">
+            <option value="" >Select Doctor</option>
+            {% for name in doctor %}
+            <option value="{{name.D_name}}">{{name.D_name}}</option>
+            {% endfor %}
+
+            
+          </select>
+        </div>
+
+        <!-- Department Filter -->
+        <div class="filter-item">
+          <label for="department">Department</label>
+          <select id="department" name="department" class="input-field">
+            <option value="">Select Department</option>
+            {% for apps in app %}
+            <option value="{{apps.Dept_name}}">{{apps.Dept_name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Patient Data Table -->
+    <section class="table-section">
+      <h2>Patient List</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Contact</th>
+            <th>Doctor</th>
+            <th>Department</th>
+            <th>Last Visit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>001</td>
+            <td>Prashant</td>
+            <td>35</td>
+            <td>Male</td>
+            <td>+1 234 567 890</td>
+            <td>Dr. Smith</td>
+            <td>Cardiology</td>
+            <td>2024-10-23</td>
+          </tr>
+          <tr>
+            <td>002</td>
+            <td>Manish</td>
+            <td>28</td>
+            <td>Male</td>
+            <td>+1 987 654 321</td>
+            <td>Dr. Jones</td>
+            <td>Neurology</td>
+            <td>2024-10-22</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+</body>
+</html>
