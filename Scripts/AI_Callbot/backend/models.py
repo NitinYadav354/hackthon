@@ -13,7 +13,7 @@ class patient(models.Model):
 
 class Appointment(models.Model):
     patient = models.ForeignKey(patient, on_delete=models.CASCADE)
-    date = models.DateTimeField()
+    date = models.DateTimeField(null=False)
     doctor = models.CharField(max_length=100)
 
 
